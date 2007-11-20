@@ -1,23 +1,24 @@
+%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
-Summary: Scan PCI devices from Python
-Name: pypciscan
+Summary: Python library for doing PCI stuff
+Name: pypcilib
 Version: 0.1
 Release: 1
 License: BSD
-URL: http://svn.planet-lab.org/wiki/pypciscan
+URL: http://svn.planet-lab.org/wiki/pypcilib
 Group: System Environment/Libraries
 
 BuildRequires: pciutils-devel
 
-Source0: pypciscan-%{version}.tar.bz2
+Source0: pypcilib-%{version}.tar.bz2
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(id -un)
 
 
 %description
-pypciscan is a Python library to scan PCI devices using
-pciutils' libpci.
+pypcilib is a Python library to scan PCI devices using
+pciutils' libpci, and to parse the modules.pcimap file.
 
 
 %prep
@@ -40,6 +41,7 @@ rm -fr "%{buildroot}"
 %files
 %defattr(-,root,root,-)
 %{python_sitearch}/pypciscan.so
+%{python_sitelib}/pypcimap.py
 
 
 %changelog

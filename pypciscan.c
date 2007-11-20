@@ -69,7 +69,7 @@ static PyObject *get_devices(PyObject *self, PyObject *args)
 
 		snprintf(buf, sizeof(buf), "%04x:%02x:%02x.%02x", dev->domain, dev->bus, dev->dev, dev->func);
 		value = Py_BuildValue("iiiii", dev->vendor_id, dev->device_id,
-				      subdevice, subvendor, dev->device_class);
+				      subvendor, subdevice, dev->device_class);
 		if (!value)
 			return NULL;
 		if (PyDict_SetItemString(ret, buf, value) == -1)
