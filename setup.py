@@ -7,7 +7,7 @@ setup(name='pypciscan',
       description='PCI scanning from Python',
       author='Daniel Hokka Zakrisson',
       author_email='daniel@hozac.com',
-      packages=['pypcimap'],
+      py_modules=['pypcimap'],
       ext_modules=[Extension('pypciscan', ['pypciscan.c'],
 			     libraries=['pci', 'z'])],
      )
