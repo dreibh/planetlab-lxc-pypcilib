@@ -60,16 +60,18 @@ static PyObject *get_devices(PyObject *self, PyObject *args)
 	for (dev = pacc->devices; dev; dev = dev->next) {
 		u16 subvendor = -1, subdevice = -1;
 		PyObject *value;
+		u8 progif = 0;
 
 		pci_fill_info(dev, PCI_FILL_IDENT | PCI_FILL_CLASS);
 		if (dev->hdrtype == PCI_HEADER_TYPE_NORMAL) {
 			subvendor = pci_read_word(dev, PCI_SUBSYSTEM_VENDOR_ID);
 			subdevice = pci_read_word(dev, PCI_SUBSYSTEM_ID);
 		}
+		progif = pci_read_byte(dev, PCI_CLASS_PROG);
 
 		snprintf(buf, sizeof(buf), "%04x:%02x:%02x.%02x", dev->domain, dev->bus, dev->dev, dev->func);
 		value = Py_BuildValue("iiiii", dev->vendor_id, dev->device_id,
-				      subvendor, subdevice, dev->device_class);
+				      subvendor, subdevice, dev->device_class << 8 | progif);
 		if (!value)
 			return NULL;
 		if (PyDict_SetItemString(ret, buf, value) == -1)
