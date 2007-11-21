@@ -32,6 +32,7 @@ CFLAGS="%{optflags}" %{__python} setup.py build
 %install
 rm -fr "%{buildroot}"
 %{__python} setup.py install -O1 --skip-build --root "%{buildroot}"
+touch %{buildroot}%{python_sitearch}/pypcimap.py{c,o}
 
 
 %clean
@@ -41,7 +42,9 @@ rm -fr "%{buildroot}"
 %files
 %defattr(-,root,root,-)
 %{python_sitearch}/pypciscan.so
-%{python_sitelib}/pypcimap.py
+%{python_sitearch}/pypcimap.py
+%ghost %{python_sitearch}/pypcimap.pyc
+%ghost %{python_sitearch}/pypcimap.pyo
 
 
 %changelog
