@@ -36,6 +36,9 @@
 import os
 import re
 
+# These are modules which are only returned if no other driver is available
+greylist = ["ata_generic", "eepro100"]
+
 class PCIMap:
     """Encapsulates modules.pcimap"""
     def __init__(self, filename):
@@ -51,6 +54,9 @@ class PCIMap:
                 (i[4] == tuple[3] or i[4] == 0xffffffff) and
                 (i[5] == (tuple[4] & i[6]))):
                 ret.append(i[0])
+        for i in greylist:
+            if i in ret and len(ret) > 1:
+                ret.remove(i)
         return ret
     def add(self, list):
         # FIXME: check values
