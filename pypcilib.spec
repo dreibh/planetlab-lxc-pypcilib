@@ -1,20 +1,34 @@
+#
+# $Id$
+#
+%define url $URL$
+
+%define name pypcilib
+%define version 0.1
+%define taglevel 1
+
+%define release %{taglevel}%{?pldistro:.%{pldistro}}%{?date:.%{date}}
+
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Summary: Python library for doing PCI stuff
-Name: pypcilib
-Version: 0.1
-Release: 1
+Name: %{name}
+Version: %{version}
+Release: %{release}
 License: BSD
-URL: http://svn.planet-lab.org/wiki/pypcilib
 Group: System Environment/Libraries
+
+Packager: PlanetLab Central <support@planet-lab.org>
+Distribution: PlanetLab %{plrelease}
+#URL: http://svn.planet-lab.org/wiki/pypcilib
+URL: %(echo %{url} | cut -d ' ' -f 2)
 
 BuildRequires: pciutils-devel
 
 Source0: pypcilib-%{version}.tar.bz2
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(id -un)
-
 
 %description
 pypcilib is a Python library to scan PCI devices using
