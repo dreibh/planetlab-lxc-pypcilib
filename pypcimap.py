@@ -37,7 +37,7 @@ import os
 import re
 
 # These are modules which are only returned if no other driver is available
-greylist = ["ata_generic", "eepro100"]
+greylist = ["ata_generic", "eepro100", "8139too"]
 
 class PCIMap:
     """Encapsulates modules.pcimap"""
