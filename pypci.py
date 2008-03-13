@@ -38,7 +38,6 @@ except:
 		# convert this list of devices into the format expected by the
 		# consumer of get_devices()
         for dev in pci_devlist:
-            print dev
             if 'device' not in dev:
                 continue
 
