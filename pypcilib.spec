@@ -4,7 +4,7 @@
 %define url $URL$
 
 %define name pypcilib
-%define version 0.1
+%define version 0.2
 %define taglevel 1
 
 %define release %{taglevel}%{?pldistro:.%{pldistro}}%{?date:.%{date}}
@@ -24,9 +24,9 @@ Distribution: PlanetLab %{plrelease}
 #URL: http://svn.planet-lab.org/wiki/pypcilib
 URL: %(echo %{url} | cut -d ' ' -f 2)
 
-BuildRequires: pciutils-devel
-
 Source0: pypcilib-%{version}.tar.bz2
+
+Requires: /sbin/lspci
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(id -un)
 
@@ -40,13 +40,14 @@ pciutils' libpci, and to parse the modules.pcimap file.
 
 
 %build
-CFLAGS="%{optflags}" %{__python} setup.py build
+%{__python} setup.py build
 
 
 %install
 rm -fr "%{buildroot}"
 %{__python} setup.py install -O1 --skip-build --root "%{buildroot}"
-touch %{buildroot}%{python_sitearch}/pypcimap.py{c,o}
+touch %{buildroot}%{python_sitelib}/pypcimap.py{c,o}
+touch %{buildroot}%{python_sitelib}/pypci.py{c,o}
 
 
 %clean
@@ -55,12 +56,17 @@ rm -fr "%{buildroot}"
 
 %files
 %defattr(-,root,root,-)
-%{python_sitearch}/pypciscan.so
-%{python_sitearch}/pypcimap.py
-%ghost %{python_sitearch}/pypcimap.pyc
-%ghost %{python_sitearch}/pypcimap.pyo
+%{python_sitelib}/pypcimap.py
+%ghost %{python_sitelib}/pypcimap.pyc
+%ghost %{python_sitelib}/pypcimap.pyo
+%{python_sitelib}/pypci.py
+%ghost %{python_sitelib}/pypci.pyc
+%ghost %{python_sitelib}/pypci.pyo
 
 
 %changelog
+* Fri Mar 14 2008 Daniel Hokka Zakrisson <daniel@hozac.com> - 0.2-1
+- Remove pypciscan library, reimplemented in Python
+
 * Mon Nov 19 2007 Daniel Hokka Zakrisson <daniel@hozac.com> - 0.1-1
 - initial release
