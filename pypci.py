@@ -41,8 +41,8 @@ def get_devices():
         if 'svendor' in dev: subvend = dev['svendor']
         else: subvend = 0xffffffffL
 
-	if 'progif' in dev: progif = dev['progif']
-	else: progif = 0
+        if 'progif' in dev: progif = dev['progif']
+        else: progif = 0
 
         value = (dev['vendor'], dev['device'], subvend, subdev, dev['class'] << 8 | progif)
         ret[dev['deviceaddr']] = value
