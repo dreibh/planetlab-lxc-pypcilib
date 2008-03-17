@@ -4,7 +4,7 @@ def get_devices():
     """ This is a replacement to the pypciscan library."""
 
     ret = {}
-    pci_cmd = os.popen("""/sbin/lspci -nvm | sed -e 's/\t/ /g' -e 's/^/"/' -e 's/$/"/' -e 's/$/,/' -e 's/^"",$/],[/'""", 'r')
+    pci_cmd = os.popen("""/sbin/lspci -nvm | sed -e 's/\t/ /g' -e 's/ Class / /' -e 's/^/"/' -e 's/$/"/' -e 's/$/,/' -e 's/^"",$/],[/'""", 'r')
     pci_str = "[" + pci_cmd.read() + "]"
     pci_list = eval(pci_str)
 
