@@ -48,10 +48,10 @@ class PCIMap:
         """Returns a list of candidate modules for the PCI device specified in tuple"""
         ret = []
         for i in self.list:
-            if ((i[1] == tuple[0] or i[1] == 0xffffffff) and
-                (i[2] == tuple[1] or i[2] == 0xffffffff) and
-                (i[3] == tuple[2] or i[3] == 0xffffffff) and
-                (i[4] == tuple[3] or i[4] == 0xffffffff) and
+            if ((i[1] == tuple[0] or i[1] == 0xffffffffL) and
+                (i[2] == tuple[1] or i[2] == 0xffffffffL) and
+                (i[3] == tuple[2] or i[3] == 0xffffffffL) and
+                (i[4] == tuple[3] or i[4] == 0xffffffffL) and
                 (i[5] == (tuple[4] & i[6]))):
                 ret.append(i[0])
         for i in greylist:
