@@ -32,7 +32,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(id -un)
 
 %description
 pypcilib is a Python library to scan PCI devices using
-pciutils' libpci, and to parse the modules.pcimap file.
+libpci from pciutils, and to parse the modules.pcimap file.
 
 
 %prep
@@ -62,6 +62,10 @@ rm -fr "%{buildroot}"
 %{python_sitelib}/pypci.py
 %ghost %{python_sitelib}/pypci.pyc
 %ghost %{python_sitelib}/pypci.pyo
+# xxx - quick'n dirty
+%if "%{distroname}" == f9
+%{python_sitelib}/pypciscan*.egg-info
+%endif
 
 
 %changelog
