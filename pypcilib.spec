@@ -5,7 +5,7 @@
 
 %define name pypcilib
 %define version 0.2
-%define taglevel 1
+%define taglevel 2
 
 %define release %{taglevel}%{?pldistro:.%{pldistro}}%{?date:.%{date}}
 
@@ -69,6 +69,9 @@ rm -fr "%{buildroot}"
 
 
 %changelog
+* Wed Sep 10 2008 Thierry Parmentelat <thierry.parmentelat@sophia.inria.fr> - pypcilib-0.2-2
+- fixes for building on f9/gcc-4.3 - no functional change
+
 * Fri Mar 14 2008 Daniel Hokka Zakrisson <daniel@hozac.com> - 0.2-1
 - Remove pypciscan library, reimplemented in Python
 
