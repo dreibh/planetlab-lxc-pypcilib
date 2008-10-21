@@ -4,7 +4,7 @@
 %define url $URL$
 
 %define name pypcilib
-%define version 0.2
+%define version 0.3
 %define taglevel 2
 
 %define release %{taglevel}%{?pldistro:.%{pldistro}}%{?date:.%{date}}
