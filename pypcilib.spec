@@ -5,7 +5,7 @@
 
 %define name pypcilib
 %define version 0.2
-%define taglevel 4
+%define taglevel 5
 
 %define release %{taglevel}%{?pldistro:.%{pldistro}}%{?date:.%{date}}
 
@@ -69,6 +69,9 @@ rm -fr "%{buildroot}"
 
 
 %changelog
+* Thu Jan 08 2009 Thierry Parmentelat <thierry.parmentelat@sophia.inria.fr> - pypcilib-0.2-5
+- support for building on fedora 10
+
 * Thu Dec 04 2008 Thierry Parmentelat <thierry.parmentelat@sophia.inria.fr> - pypcilib-0.2-4
 - somehow the versions in the specfile are wrong in tag 0.2-3
 
