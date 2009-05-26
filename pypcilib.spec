@@ -5,7 +5,7 @@
 
 %define name pypcilib
 %define version 0.2
-%define taglevel 6
+%define taglevel 7
 
 %define release %{taglevel}%{?pldistro:.%{pldistro}}%{?date:.%{date}}
 
@@ -69,6 +69,9 @@ rm -fr "%{buildroot}"
 
 
 %changelog
+* Tue May 26 2009 Thierry Parmentelat <thierry.parmentelat@sophia.inria.fr> - pypcilib-0.2-7
+- ready for fedora11
+
 * Tue Apr 07 2009 Thierry Parmentelat <thierry.parmentelat@sophia.inria.fr> - pypcilib-0.2-6
 - use 8139too driver over 8139cp for realtek 8139 chipsets
 
