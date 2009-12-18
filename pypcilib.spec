@@ -63,7 +63,7 @@ rm -fr "%{buildroot}"
 %ghost %{python_sitelib}/pypci.pyc
 %ghost %{python_sitelib}/pypci.pyo
 # xxx - quick'n dirty
-%if "%{distroname}" == "f9" || "%{distroname}" == "f10" || "%{distroname}" == "f11"
+%if "%{distro}" == "Fedora" && %{distrorelease} >= 9
 %{python_sitelib}/pypciscan*.egg-info
 %endif
 
