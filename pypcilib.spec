@@ -5,7 +5,7 @@
 
 %define name pypcilib
 %define version 0.2
-%define taglevel 8
+%define taglevel 9
 
 %define release %{taglevel}%{?pldistro:.%{pldistro}}%{?date:.%{date}}
 
@@ -69,6 +69,9 @@ rm -fr "%{buildroot}"
 
 
 %changelog
+* Sun Dec 27 2009 Thierry Parmentelat <thierry.parmentelat@sophia.inria.fr> - pypcilib-0.2-9
+- fix build for fedora 12
+
 * Mon Aug 10 2009 Stephen Soltesz <soltesz@cs.princeton.edu> - pypcilib-0.2-8
 - Add e1000e to the greylist
 
