@@ -5,7 +5,7 @@
 
 %define name pypcilib
 %define version 0.2
-%define taglevel 9
+%define taglevel 10
 
 %define release %{taglevel}%{?pldistro:.%{pldistro}}%{?date:.%{date}}
 
@@ -69,6 +69,9 @@ rm -fr "%{buildroot}"
 
 
 %changelog
+* Fri Mar 11 2011 S.Çağlar Onur <caglar@verivue.com> - pypcilib-0.2-10
+- Supoprt SL6
+
 * Sun Dec 27 2009 Thierry Parmentelat <thierry.parmentelat@sophia.inria.fr> - pypcilib-0.2-9
 - fix build for fedora 12
 
