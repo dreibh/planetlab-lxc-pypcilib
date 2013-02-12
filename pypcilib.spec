@@ -5,7 +5,7 @@
 
 %define name pypcilib
 %define version 0.2
-%define taglevel 10
+%define taglevel 11
 
 %define release %{taglevel}%{?pldistro:.%{pldistro}}%{?date:.%{date}}
 
@@ -69,6 +69,8 @@ rm -fr "%{buildroot}"
 
 
 %changelog
+* Mon Feb 11 2013 Stephen Soltesz <soltesz@opentechinstitute.org> - pypcilib-0.2-11
+
 * Fri Mar 11 2011 S.Çağlar Onur <caglar@verivue.com> - pypcilib-0.2-10
 - Supoprt SL6
 
