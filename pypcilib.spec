@@ -6,8 +6,7 @@
 
 %define release %{taglevel}%{?pldistro:.%{pldistro}}%{?date:.%{date}}
 
-%{!?python_sitelib: %define python_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%{!?python_sitearch: %define python_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+%define python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")
 
 # https://fedoraproject.org/wiki/Changes/No_more_automagic_Python_bytecompilation
 # Turn off the brp-python-bytecompile automagic
@@ -50,8 +49,8 @@ rm -fr "%{buildroot}"
 %{__python2} setup.py install -O1 --skip-build --root "%{buildroot}"
 %py_byte_compile %{__python2} %{buildroot}%{_datadir}/pypcimap 
 %py_byte_compile %{__python2} %{buildroot}%{_datadir}/pypci
-touch %{buildroot}%{python_sitelib}/pypcimap.py{c,o}
-touch %{buildroot}%{python_sitelib}/pypci.py{c,o}
+touch %{buildroot}%{python2_sitelib}/pypcimap.py{c,o}
+touch %{buildroot}%{python2_sitelib}/pypci.py{c,o}
 
 
 %clean
@@ -60,15 +59,15 @@ rm -fr "%{buildroot}"
 
 %files
 %defattr(-,root,root,-)
-%{python_sitelib}/pypcimap.py
-%ghost %{python_sitelib}/pypcimap.pyc
-%ghost %{python_sitelib}/pypcimap.pyo
-%{python_sitelib}/pypci.py
-%ghost %{python_sitelib}/pypci.pyc
-%ghost %{python_sitelib}/pypci.pyo
+%{python2_sitelib}/pypcimap.py
+%ghost %{python2_sitelib}/pypcimap.pyc
+%ghost %{python2_sitelib}/pypcimap.pyo
+%{python2_sitelib}/pypci.py
+%ghost %{python2_sitelib}/pypci.pyc
+%ghost %{python2_sitelib}/pypci.pyo
 # xxx - quick'n dirty
 %if ("%{distro}" == "Fedora" && %{distrorelease} >= 9) || ("%{distro}" == "SL" && %{distrorelease} >= 6) || ("%{distro}" == "CentOS")
-%{python_sitelib}/pypciscan*.egg-info
+%{python2_sitelib}/pypciscan*.egg-info
 %endif
 
 
