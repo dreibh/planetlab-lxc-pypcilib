@@ -1,4 +1,4 @@
-#!/usr/bin/python -tt
+#!/usr/bin/python2 -tt
 # Copyright 2007 The Trustees of Princeton University
 # Author: Daniel Hokka Zakrisson
 # $Id$

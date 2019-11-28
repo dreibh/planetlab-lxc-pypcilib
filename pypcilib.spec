@@ -1,6 +1,3 @@
-#
-# $Id$
-#
 %define url $URL$
 
 %define name pypcilib
@@ -9,8 +6,8 @@
 
 %define release %{taglevel}%{?pldistro:.%{pldistro}}%{?date:.%{date}}
 
-%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
+%{!?python_sitelib: %define python_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
+%{!?python_sitearch: %define python_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Summary: Python library for doing PCI stuff
 Name: %{name}
@@ -40,12 +37,12 @@ libpci from pciutils, and to parse the modules.pcimap file.
 
 
 %build
-%{__python} setup.py build
+%{__python2} setup.py build
 
 
 %install
 rm -fr "%{buildroot}"
-%{__python} setup.py install -O1 --skip-build --root "%{buildroot}"
+%{__python2} setup.py install -O1 --skip-build --root "%{buildroot}"
 touch %{buildroot}%{python_sitelib}/pypcimap.py{c,o}
 touch %{buildroot}%{python_sitelib}/pypci.py{c,o}
 
