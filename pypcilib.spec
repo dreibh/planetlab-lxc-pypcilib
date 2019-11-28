@@ -28,6 +28,7 @@ URL: %(echo %{url} | cut -d ' ' -f 2)
 Source0: pypcilib-%{version}.tar.bz2
 
 Requires: /sbin/lspci
+BuildRequires: python2-devel
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(id -un)
 
@@ -47,6 +48,8 @@ libpci from pciutils, and to parse the modules.pcimap file.
 %install
 rm -fr "%{buildroot}"
 %{__python2} setup.py install -O1 --skip-build --root "%{buildroot}"
+%py_byte_compile %{__python2} %{buildroot}%{_datadir}/pypcimap 
+%py_byte_compile %{__python2} %{buildroot}%{_datadir}/pypci
 touch %{buildroot}%{python_sitelib}/pypcimap.py{c,o}
 touch %{buildroot}%{python_sitelib}/pypci.py{c,o}
 
