@@ -9,6 +9,10 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?python_sitearch: %define python_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
+# https://fedoraproject.org/wiki/Changes/No_more_automagic_Python_bytecompilation
+# Turn off the brp-python-bytecompile automagic
+%global _python_bytecompile_extra 0
+
 Summary: Python library for doing PCI stuff
 Name: %{name}
 Version: %{version}
